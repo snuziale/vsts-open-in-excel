@@ -1,4 +1,4 @@
-# VSTS Open Work Items in Excel
+# Open in Excel
 
 **Important: This extension requires you to have Microsoft Excel and the latest version of [Visual Studio '15'](http://www.visualstudio.com) installed.**
 
