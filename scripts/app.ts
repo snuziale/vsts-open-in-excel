@@ -123,13 +123,16 @@ export var openQueryOnToolbarAction = {
             icon: "img/miniexcellogo.png",
             showText: true,
             action: (actionContext: IQueryContributionContext) => {
-                if (actionContext && actionContext.query && actionContext.query.id) {
+                if (actionContext && actionContext.query && actionContext.query.wiql && isSupportedQueryId(actionContext.query.id)) {
                     let qid = actionContext.query.id;
                     let context = VSS.getWebContext();
                     let collectionUri = context.collection.uri;
                     let projectName = context.project.name;
 
                     window.location.href = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
+                }
+                else {
+                    alert("This operation is not support for this query, you may only export a query that is in My Queries or Shared Queries.");
                 }
             }
         }];
