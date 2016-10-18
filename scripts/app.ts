@@ -33,15 +33,17 @@ export function generateUrl(action: string, collection: string, project: string,
         if (!wids) {
             throw new Error(`'wids' must be provided for '${SupportedActions.OpenItems}' action.`);
         }
-        url += `&wid=${wids}&columns=${columns}`;
+        url += `&wid=${wids}`;
+
+        if (columns && columns.length > 0) {
+            url += `&columns=${columns}`;
+        }
     }
     else if (action === SupportedActions.OpenQuery) {
         if (!qid) {
             throw new Error(`'qid' must be provided for '${SupportedActions.OpenQuery}' action.`);
         }
-        if (qid) {
-            url += `&qid=${qid}`;
-        }
+        url += `&qid=${qid}`;
     }
     else {
         throw new Error(`Unsupported action provided: ${action}`);
@@ -62,10 +64,12 @@ export interface IQueryObject {
     wiql: string;
 }
 
-export interface IQueryContributionContext {
+export interface IActionContext {
+    id?: number
     query?: IQueryObject;
-    queryText: string;
-    workItemIds: number[];
+    queryText?: string;
+    ids?: number[];
+    workItemIds?: number[];
     columns?: string[];
 }
 
@@ -79,7 +83,7 @@ export var openQueryAction = {
                 title: "Open in Excel",
                 text: "Open in Excel",
                 icon: "img/miniexcellogo.png",
-                action: (actionContext: IQueryContributionContext) => {
+                action: (actionContext: IActionContext) => {
                     if (actionContext && actionContext.query && actionContext.query.id) {
                         let qid = actionContext.query.id;
                         let context = VSS.getWebContext();
@@ -100,16 +104,14 @@ export var openWorkItemsAction = {
             title: "Open in Excel",
             text: "Open in Excel",
             icon: "img/miniexcellogo.png",
-            action: (actionContext: IQueryContributionContext) => {
-                if (actionContext && actionContext.workItemIds && actionContext.workItemIds.length > 0) {
-                    let wids = actionContext.workItemIds;
-                    let columns = actionContext.columns;
-                    let context = VSS.getWebContext();
-                    let collectionUri = context.collection.uri;
-                    let projectName = context.project.name;
+            action: (actionContext: IActionContext) => {
+                let wids = actionContext.ids || actionContext.workItemIds || (actionContext.id > 0 ? [actionContext.id] : null);
+                let columns = actionContext.columns;
+                let context = VSS.getWebContext();
+                let collectionUri = context.collection.uri;
+                let projectName = context.project.name;
 
-                    window.location.href = generateUrl(SupportedActions.OpenItems, collectionUri, projectName, null, wids, columns);
-                }
+                window.location.href = generateUrl(SupportedActions.OpenItems, collectionUri, projectName, null, wids, columns);
             }
         }];
     }
@@ -122,7 +124,7 @@ export var openQueryOnToolbarAction = {
             text: "Open in Excel",
             icon: "img/miniexcellogo.png",
             showText: true,
-            action: (actionContext: IQueryContributionContext) => {
+            action: (actionContext: IActionContext) => {
                 if (actionContext && actionContext.query && actionContext.query.wiql && isSupportedQueryId(actionContext.query.id)) {
                     let qid = actionContext.query.id;
                     let context = VSS.getWebContext();
@@ -132,7 +134,7 @@ export var openQueryOnToolbarAction = {
                     window.location.href = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
                 }
                 else {
-                    alert("This operation is not support for this query, you may only export a query that is in My Queries or Shared Queries.");
+                    alert("This operation is not supported to this query. This extension supports queries saved in My Queries and Shared Queries.");
                 }
             }
         }];

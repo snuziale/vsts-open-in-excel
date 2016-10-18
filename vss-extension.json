@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "vsts-open-work-items-in-excel",
-    "version": "0.1.16",
+    "version": "0.1.19",
     "name": "VSTS Open in Excel",
     "scopes": [
         "vso.work",
