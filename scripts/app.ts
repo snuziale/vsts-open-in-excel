@@ -65,11 +65,12 @@ export interface IQueryObject {
 }
 
 export interface IActionContext {
-    id?: number
+    id?: number;            // From card
+    workItemId?: number;    // From work item form
     query?: IQueryObject;
     queryText?: string;
     ids?: number[];
-    workItemIds?: number[];
+    workItemIds?: number[]; // From backlog/iteration (context menu) and query results (toolbar and context menu)
     columns?: string[];
 }
 
@@ -105,7 +106,10 @@ export var openWorkItemsAction = {
             text: "Open in Excel",
             icon: "img/miniexcellogo.png",
             action: (actionContext: IActionContext) => {
-                let wids = actionContext.ids || actionContext.workItemIds || (actionContext.id > 0 ? [actionContext.id] : null);
+                let wids = actionContext.ids ||
+                    actionContext.workItemIds ||
+                    (actionContext.workItemId > 0 ? [actionContext.workItemId] : null) ||
+                    (actionContext.id > 0 ? [actionContext.id] : null);
                 let columns = actionContext.columns;
                 let context = VSS.getWebContext();
                 let collectionUri = context.collection.uri;
