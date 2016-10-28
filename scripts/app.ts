@@ -86,12 +86,13 @@ export var openQueryAction = {
                 icon: "img/miniexcellogo.png",
                 action: (actionContext: IActionContext) => {
                     if (actionContext && actionContext.query && actionContext.query.id) {
-                        let qid = actionContext.query.id;
-                        let context = VSS.getWebContext();
-                        let collectionUri = context.collection.uri;
-                        let projectName = context.project.name;
+                        const qid = actionContext.query.id;
+                        const context = VSS.getWebContext();
+                        const collectionUri = context.collection.uri;
+                        const projectName = context.project.name;
 
-                        window.location.href = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
+                        const url = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
+                        window.open(url, "_self");
                     }
                 }
             }];
@@ -106,16 +107,17 @@ export var openWorkItemsAction = {
             text: "Open in Excel",
             icon: "img/miniexcellogo.png",
             action: (actionContext: IActionContext) => {
-                let wids = actionContext.ids ||
+                const wids = actionContext.ids ||
                     actionContext.workItemIds ||
                     (actionContext.workItemId > 0 ? [actionContext.workItemId] : null) ||
                     (actionContext.id > 0 ? [actionContext.id] : null);
-                let columns = actionContext.columns;
-                let context = VSS.getWebContext();
-                let collectionUri = context.collection.uri;
-                let projectName = context.project.name;
+                const columns = actionContext.columns;
+                const context = VSS.getWebContext();
+                const collectionUri = context.collection.uri;
+                const projectName = context.project.name;
 
-                window.location.href = generateUrl(SupportedActions.OpenItems, collectionUri, projectName, null, wids, columns);
+                const url = generateUrl(SupportedActions.OpenItems, collectionUri, projectName, null, wids, columns);
+                window.open(url, "_self");
             }
         }];
     }
@@ -130,15 +132,16 @@ export var openQueryOnToolbarAction = {
             showText: true,
             action: (actionContext: IActionContext) => {
                 if (actionContext && actionContext.query && actionContext.query.wiql && isSupportedQueryId(actionContext.query.id)) {
-                    let qid = actionContext.query.id;
-                    let context = VSS.getWebContext();
-                    let collectionUri = context.collection.uri;
-                    let projectName = context.project.name;
+                    const qid = actionContext.query.id;
+                    const context = VSS.getWebContext();
+                    const collectionUri = context.collection.uri;
+                    const projectName = context.project.name;
 
-                    window.location.href = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
+                    const url = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
+                    window.open(url, "_self");
                 }
                 else {
-                    alert("This operation is not supported to this query. This extension supports queries saved in My Queries and Shared Queries.");
+                    alert("Unable to perform operation. To use this extension, queries must be saved in My Queries or Shared Queries.");
                 }
             }
         }];
