@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "vsts-open-work-items-in-excel",
-    "version": "0.1.22",
+    "version": "0.1.24",
     "name": "VSTS Open in Excel",
     "scopes": [
         "vso.work",
@@ -37,7 +37,7 @@
             "uri": "https://aka.ms/open-in-excel"
         },
         "support": {
-            "uri": "https://aka.ms/open-in-excel"
+            "uri": "https://github.com/snuziale/vsts-open-in-excel"
         }
     },
     "branding": {
