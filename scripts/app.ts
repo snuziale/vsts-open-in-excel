@@ -163,7 +163,7 @@ function showNotification() {
         hostDialogService.openDialog(`${extensionContext.publisherId}.${extensionContext.extensionId}.notificationDialog`,
             {
                 title: "We're opening this in Microsoft Excel...",
-                width: 400,
+                width: 450,
                 height: 250,
                 modal: true,
                 draggable: false,
