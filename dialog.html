@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <script src="build/VSS.SDK.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // Initialize framework 
+        VSS.init({
+            explicitNotifyLoaded: true,
+            usePlatformScripts: true,
+        });
+        
+        // Load main entry point for extension
+        VSS.require(["build/dialog"], function () {
+            // Loading succeeded
+            VSS.notifyLoadSucceeded();
+        });
+    </script>
+
+    <div id="content">
+        <div>Thanks for using this <a href="https://aka.ms/open-in-excel" target="_blank">extension</a>...</div>
+        <div>This extension requires one of the following clients to be installed:</div>
+        <ul>
+            <li><span>Visual Studio 2017 RC (or later): <a href="https://www.visualstudio.com/downloads/#visual-studio-enterprise-2017-rc" target="_blank">Download</a></span></li>
+            <li><span>Team Foundation Server Office® Integration 2017 RC (or later): <a href="https://www.visualstudio.com/downloads/#team-foundation-server-office-integration-2017-rc"
+                target="_blank">Download</a></span></li>
+        </ul>
+        <div id="message">This dialog will close in <span id="countdown"></span> seconds... <a href="javascript:cancelAutoClose()">cancel</a></div>
+    </div>
+
+</body>
+
+</html>

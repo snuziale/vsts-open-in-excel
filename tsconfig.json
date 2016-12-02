@@ -11,6 +11,7 @@
     ],
     "files": [
         "scripts/app.ts",
+        "scripts/dialog.ts",
         "scripts/index.ts",
         "typings/index.d.ts"
     ],

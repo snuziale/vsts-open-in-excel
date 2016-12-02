@@ -1,6 +1,8 @@
 # Open in Excel
 
-**Important: This extension requires you to have Microsoft Excel and the latest version of [Visual Studio '15'](http://www.visualstudio.com) installed.**
+> **This extension requires Microsoft Excel and one of the following clients to be installed:**
+> - [Visual Studio 2017 RC](https://www.visualstudio.com/downloads/#visual-studio-enterprise-2017-rc) or later        
+> - [Team Foundation Server Office® Integration 2017 RC](https://www.visualstudio.com/downloads/#team-foundation-server-office-integration-2017-rc) or later
 
 Use this extension for bulk editing work items, or to leverage Excel tools to analyze and visualize a large number of work items. Work items that are opened in Excel can be edited and published back to Visual Studio Team Services with a single click. Once you are ready to publish your changes, simply hit "Publish" from Excel to sync your changes back to VSTS. [Learn more about Office integration](https://www.visualstudio.com/da-dk/docs/work/office/bulk-add-modify-work-items-excel)
 

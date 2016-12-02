@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "vsts-open-work-items-in-excel",
-    "version": "0.1.24",
+    "version": "0.1.48",
     "name": "VSTS Open in Excel",
     "scopes": [
         "vso.work",
@@ -14,7 +14,7 @@
     },
     "targets": [
         {
-            "id": "Microsoft.VisualStudio.Services.Cloud"
+            "id": "Microsoft.VisualStudio.Services"
         }
     ],
     "tags": [
@@ -56,6 +56,10 @@
         {
             "path": "index.html",
             "addressable": true
+        },
+        {
+            "path": "dialog.html",
+            "addressable": true
         }
     ],
     "categories": [
@@ -64,42 +68,46 @@
     "contributions": [
         {
             "id": "openQueryAction",
-            "type": "ms.vss-work-web.action",
-            "description": "Open in Excel",
+            "type": "ms.vss-web.action-provider",
+            "description": "Open in Excel context menu on a query definition.",
             "targets": [
                 "ms.vss-work-web.work-item-query-menu"
             ],
             "properties": {
-                "text": "Open in Excel",
-                "title": "Requires Visual Studio '15'",
+                "group": "contributed",
                 "uri": "index.html"
             }
         },
         {
             "id": "openWorkItemsAction",
-            "type": "ms.vss-work-web.action-provider",
-            "description": "Open in Excel",
+            "type": "ms.vss-web.action-provider",
+            "description": "Open in Excel context menu on a work item.",
             "targets": [
                 "ms.vss-work-web.work-item-context-menu"
             ],
             "properties": {
-                "text": "Open in Excel",
-                "title": "Open in Excel",
-                "icon": "img/miniexcellogo.png",
+                "group": "contributed",
                 "uri": "index.html"
             }
         },
         {
             "id": "openQueryOnToolbarAction",
-            "type": "ms.vss-work-web.action",
-            "description": "Open in Excel",
+            "type": "ms.vss-web.action-provider",
+            "description": "Open in Excel toolbar menu item on the query results.",
             "targets": [
                 "ms.vss-work-web.work-item-query-results-toolbar-menu"
             ],
             "properties": {
-                "text": "Open in Excel",
-                "icon": "img/miniexcellogo.png",
+                "group": "contributed",
                 "uri": "index.html"
+            }
+        },
+        {
+            "id": "notificationDialog",
+            "type": "ms.vss-web.control",
+            "targets": [],
+            "properties": {
+                "uri": "dialog.html"
             }
         }
     ]

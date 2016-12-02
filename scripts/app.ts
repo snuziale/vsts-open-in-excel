@@ -92,7 +92,7 @@ export var openQueryAction = {
                         const projectName = context.project.name;
 
                         const url = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
-                        window.open(url, "_self");
+                        openUrl(url);
                     }
                 }
             }];
@@ -117,7 +117,7 @@ export var openWorkItemsAction = {
                 const projectName = context.project.name;
 
                 const url = generateUrl(SupportedActions.OpenItems, collectionUri, projectName, null, wids, columns);
-                window.open(url, "_self");
+                openUrl(url);
             }
         }];
     }
@@ -138,7 +138,7 @@ export var openQueryOnToolbarAction = {
                     const projectName = context.project.name;
 
                     const url = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
-                    window.open(url, "_self");
+                    openUrl(url);
                 }
                 else {
                     alert("Unable to perform operation. To use this extension, queries must be saved in My Queries or Shared Queries.");
@@ -147,3 +147,41 @@ export var openQueryOnToolbarAction = {
         }];
     }
 };
+
+function openUrl(url: string) {
+    showNotification();
+    window.open(url, "_self");
+}
+
+function showNotification() {
+    const extensionContext = VSS.getExtensionContext();
+    let dialog: IExternalDialog;
+
+    VSS.getService(VSS.ServiceIds.Dialog).then((hostDialogService: IHostDialogService) => {
+        hostDialogService.openDialog(`${extensionContext.publisherId}.${extensionContext.extensionId}.notificationDialog`,
+            {
+                title: "Launching...",
+                width: 400,
+                height: 250,
+                modal: true,
+                draggable: false,
+                resizable: false,
+                buttons: {
+                    "ok": {
+                        id: "ok",
+                        text: "Dimiss",
+                        click: () => {
+                            dialog.close();
+                        },
+                        class: "cta",
+                    }
+                }
+            },
+            {
+                close: () => dialog.close(),
+            })
+            .then(d => {
+                dialog = d;
+            });
+    });
+}
