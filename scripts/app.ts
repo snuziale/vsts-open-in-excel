@@ -150,7 +150,9 @@ export var openQueryOnToolbarAction = {
 
 function openUrl(url: string) {
     showNotification();
-    window.open(url, "_self");
+    VSS.getService(VSS.ServiceIds.Navigation).then((navigationService: any) => {
+        navigationService.navigate(url);
+    });
 }
 
 function showNotification() {
@@ -160,7 +162,7 @@ function showNotification() {
     VSS.getService(VSS.ServiceIds.Dialog).then((hostDialogService: IHostDialogService) => {
         hostDialogService.openDialog(`${extensionContext.publisherId}.${extensionContext.extensionId}.notificationDialog`,
             {
-                title: "Launching...",
+                title: "We're opening this in Microsoft Excel...",
                 width: 400,
                 height: 250,
                 modal: true,
@@ -169,7 +171,7 @@ function showNotification() {
                 buttons: {
                     "ok": {
                         id: "ok",
-                        text: "Dimiss",
+                        text: "Dismiss",
                         click: () => {
                             dialog.close();
                         },
