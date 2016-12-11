@@ -1,6 +1,6 @@
 const dialog: { close: () => void } = VSS.getConfiguration();
 
-let counter = 10;
+let counter = 15;
 
 const id = setInterval(() => {
     counter--;
