@@ -141,7 +141,19 @@ export var openQueryOnToolbarAction = {
                     openUrl(url);
                 }
                 else {
-                    alert("Unable to perform operation. To use this extension, queries must be saved in My Queries or Shared Queries.");
+                    VSS.getService(VSS.ServiceIds.Dialog).then((hostDialogService: IHostDialogService) => {
+                        hostDialogService.openMessageDialog(
+                            "To use this extension, queries must be saved in \"My Queries\" or \"Shared Queries\".",
+                            {
+                                title: "Unable to perform this operation",
+                                buttons: [
+                                    {
+                                        id: "ok",
+                                        text: "OK"
+                                    }
+                                ]
+                            });
+                    });
                 }
             }
         }];
