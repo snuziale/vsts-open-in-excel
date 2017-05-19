@@ -75,76 +75,49 @@ export interface IActionContext {
 }
 
 export var openQueryAction = {
-    getMenuItems: (context: any) => {
-        if (!context || !context.query || !context.query.wiql || !isSupportedQueryId(context.query.id)) {
-            return null;
-        }
-        else {
-            return [<IContributedMenuItem>{
-                title: "Open in Excel",
-                text: "Open in Excel",
-                icon: "img/miniexcellogo.png",
-                action: (actionContext: IActionContext) => {
-                    if (actionContext && actionContext.query && actionContext.query.id) {
-                        const qid = actionContext.query.id;
-                        const context = VSS.getWebContext();
-                        const collectionUri = context.collection.uri;
-                        const projectName = context.project.name;
+    execute: (actionContext: IActionContext) => {
+        if (actionContext && actionContext.query && actionContext.query.id) {
+            const qid = actionContext.query.id;
+            const context = VSS.getWebContext();
+            const collectionUri = context.collection.uri;
+            const projectName = context.project.name;
 
-                        const url = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
-                        openUrl(url);
-                    }
-                }
-            }];
+            const url = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
+            openUrl(url);
         }
     }
 };
 
 export var openWorkItemsAction = {
-    getMenuItems: (context: any) => {
-        return [<IContributedMenuItem>{
-            title: "Open in Excel",
-            text: "Open in Excel",
-            icon: "img/miniexcellogo.png",
-            action: (actionContext: IActionContext) => {
-                const wids = actionContext.ids ||
-                    actionContext.workItemIds ||
-                    (actionContext.workItemId > 0 ? [actionContext.workItemId] : null) ||
-                    (actionContext.id > 0 ? [actionContext.id] : null);
-                const columns = actionContext.columns;
-                const context = VSS.getWebContext();
-                const collectionUri = context.collection.uri;
-                const projectName = context.project.name;
+    execute: (actionContext: IActionContext) => {
+        const wids = actionContext.ids ||
+            actionContext.workItemIds ||
+            (actionContext.workItemId > 0 ? [actionContext.workItemId] : null) ||
+            (actionContext.id > 0 ? [actionContext.id] : null);
+        const columns = actionContext.columns;
+        const context = VSS.getWebContext();
+        const collectionUri = context.collection.uri;
+        const projectName = context.project.name;
 
-                const url = generateUrl(SupportedActions.OpenItems, collectionUri, projectName, null, wids, columns);
-                openUrl(url);
-            }
-        }];
+        const url = generateUrl(SupportedActions.OpenItems, collectionUri, projectName, null, wids, columns);
+        openUrl(url);
     }
 };
 
 export var openQueryOnToolbarAction = {
-    getMenuItems: (context: any) => {
-        return [<IContributedMenuItem>{
-            title: "Open in Excel",
-            text: "Open in Excel",
-            icon: "img/miniexcellogo.png",
-            showText: true,
-            action: (actionContext: IActionContext) => {
-                if (actionContext && actionContext.query && actionContext.query.wiql && isSupportedQueryId(actionContext.query.id)) {
-                    const qid = actionContext.query.id;
-                    const context = VSS.getWebContext();
-                    const collectionUri = context.collection.uri;
-                    const projectName = context.project.name;
+    execute: (actionContext: IActionContext) => {
+        if (actionContext && actionContext.query && actionContext.query.wiql && isSupportedQueryId(actionContext.query.id)) {
+            const qid = actionContext.query.id;
+            const context = VSS.getWebContext();
+            const collectionUri = context.collection.uri;
+            const projectName = context.project.name;
 
-                    const url = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
-                    openUrl(url);
-                }
-                else {
-                    alert("Unable to perform operation. To use this extension, queries must be saved in My Queries or Shared Queries.");
-                }
-            }
-        }];
+            const url = generateUrl(SupportedActions.OpenQuery, collectionUri, projectName, qid);
+            openUrl(url);
+        }
+        else {
+            alert("Unable to perform operation. To use this extension, queries must be saved in My Queries or Shared Queries.");
+        }
     }
 };
 
