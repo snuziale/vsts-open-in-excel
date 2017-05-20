@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "vsts-open-work-items-in-excel",
-    "version": "0.1.57",
+    "version": "0.1.64",
     "name": "VSTS Open in Excel",
     "scopes": [
         "vso.work",
@@ -68,37 +68,43 @@
     "contributions": [
         {
             "id": "openQueryAction",
-            "type": "ms.vss-web.action-provider",
+            "type": "ms.vss-web.action",
             "description": "Open in Excel context menu on a query definition.",
             "targets": [
                 "ms.vss-work-web.work-item-query-menu"
             ],
             "properties": {
-                "group": "contributed",
+                "text": "Open in Excel",
+                "icon": "img/miniexcellogo.png",
+                "group": "actions",
                 "uri": "index.html"
             }
         },
         {
             "id": "openWorkItemsAction",
-            "type": "ms.vss-web.action-provider",
+            "type": "ms.vss-web.action",
             "description": "Open in Excel context menu on a work item.",
             "targets": [
                 "ms.vss-work-web.work-item-context-menu"
             ],
             "properties": {
-                "group": "contributed",
+                "text": "Open in Excel",
+                "icon": "img/miniexcellogo.png",
+                "group": "actions",
                 "uri": "index.html"
             }
         },
         {
             "id": "openQueryOnToolbarAction",
-            "type": "ms.vss-web.action-provider",
+            "type": "ms.vss-web.action",
             "description": "Open in Excel toolbar menu item on the query results.",
             "targets": [
                 "ms.vss-work-web.work-item-query-results-toolbar-menu"
             ],
             "properties": {
-                "group": "contributed",
+                "text": "Open in Excel",
+                "icon": "img/miniexcellogo.png",
+                "group": "actions",
                 "uri": "index.html"
             }
         },
