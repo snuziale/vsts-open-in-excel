@@ -4,7 +4,6 @@
         "sourceMap": false,
         "moduleResolution": "node",
         "target": "es5",
-        "rootDir": "scripts/",
         "outDir": "build/",
         "types": [
             "vss-web-extension-sdk",
