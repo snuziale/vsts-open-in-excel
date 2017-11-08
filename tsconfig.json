@@ -2,7 +2,10 @@
     "compilerOptions": {
         "module": "amd",
         "sourceMap": false,
-        "target": "es5"
+        "target": "es5",
+        "types": [
+            "vss-web-extension-sdk"
+        ]
     },
     "filesGlob": [
         "./scripts/**/*.ts",
