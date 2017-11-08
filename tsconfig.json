@@ -2,23 +2,18 @@
     "compilerOptions": {
         "module": "amd",
         "sourceMap": false,
+        "moduleResolution": "node",
         "target": "es5",
+        "rootDir": "scripts/",
+        "outDir": "build/",
         "types": [
-            "vss-web-extension-sdk"
+            "vss-web-extension-sdk",
+            "jquery"
         ]
     },
-    "filesGlob": [
-        "./scripts/**/*.ts",
-        "!**/*.tests.ts",
-        "./typings/index.d.ts"
-    ],
     "files": [
         "scripts/app.ts",
         "scripts/dialog.ts",
         "scripts/index.ts",
-        "typings/index.d.ts"
-    ],
-    "exclude": [
-        "./node_modules"
     ]
 }
