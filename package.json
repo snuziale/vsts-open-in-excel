@@ -10,8 +10,10 @@
   "scripts": {
     "build": "tsc -p .",
     "postbuild": "npm run package",
-    "package": "tfx extension create",
-    "gallery-publish": "tfx extension publish --rev-version",
+    "package": "tfx extension create --rev-version --manifests vss-extension.json --overrides-file configs/release.json",
+    "package-dev": "tfx extension create --rev-version --manifests vss-extension.json --overrides-file configs/dev.json",
+    "gallery-publish": "tfx extension publish --service-url https://marketplace.visualstudio.com --manifests vss-extension.json --overrides-file configs/release.json",
+    "gallery-publish-dev": "tfx extension publish --service-url https://marketplace.visualstudio.com --manifests vss-extension.json --overrides-file configs/dev.json",
     "clean": "rimraf ./build && rimraf ./*.vsix"
   },
   "dependencies": {
