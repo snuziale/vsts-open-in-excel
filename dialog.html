@@ -4,17 +4,17 @@
 
 <head>
     <meta charset="utf-8" />
-    <script src="build/VSS.SDK.min.js"></script>
+    <script src="lib/VSS.SDK.min.js"></script>
 </head>
 
 <body>
     <script type="text/javascript">
-        // Initialize framework 
+        // Initialize framework
         VSS.init({
             explicitNotifyLoaded: true,
             usePlatformScripts: true,
         });
-        
+
         // Load main entry point for extension
         VSS.require(["build/dialog"], function () {
             // Loading succeeded

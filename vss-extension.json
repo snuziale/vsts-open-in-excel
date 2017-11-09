@@ -55,11 +55,18 @@
         },
         {
             "path": "index.html",
-            "addressable": true
+            "addressable": true,
+            "contentType": "text/html"
         },
         {
             "path": "dialog.html",
-            "addressable": true
+            "addressable": true,
+            "contentType": "text/html"
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
         }
     ],
     "categories": [
