@@ -1,120 +1,120 @@
 {
-    "manifestVersion": 1,
-    "id": "vsts-open-work-items-in-excel",
-    "version": "0.1.66",
-    "name": "VSTS Open in Excel",
-    "scopes": [
-        "vso.work",
-        "vso.work_write"
-    ],
-    "description": "This extension opens work items and query results in Excel from Visual Studio Team Services",
-    "publisher": "blueprint",
-    "icons": {
-        "default": "img/excellogo.png"
+  "manifestVersion": 1,
+  "id": "vsts-open-work-items-in-excel",
+  "version": "0.1.71",
+  "name": "Azure DevOps Open in Excel",
+  "scopes": [
+    "vso.work",
+    "vso.work_write"
+  ],
+  "description": "This extension opens work items and query results in Excel from Azure DevOps",
+  "publisher": "blueprint",
+  "icons": {
+    "default": "img/excellogo.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "tags": [
+    "excel",
+    "office",
+    "office integration",
+    "workitem",
+    "agile"
+  ],
+  "content": {
+    "details": {
+      "path": "details.md"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "https://aka.ms/open-in-excel"
     },
-    "targets": [
-        {
-            "id": "Microsoft.VisualStudio.Services"
-        }
-    ],
-    "tags": [
-        "excel",
-        "office",
-        "office integration",
-        "workitem",
-        "agile"
-    ],
-    "content": {
-        "details": {
-            "path": "details.md"
-        }
+    "learn": {
+      "uri": "https://aka.ms/open-in-excel"
     },
-    "links": {
-        "getstarted": {
-            "uri": "https://aka.ms/open-in-excel"
-        },
-        "learn": {
-            "uri": "https://aka.ms/open-in-excel"
-        },
-        "support": {
-            "uri": "https://github.com/snuziale/vsts-open-in-excel"
-        }
+    "support": {
+      "uri": "https://github.com/snuziale/vsts-open-in-excel"
+    }
+  },
+  "branding": {
+    "color": "rgb(255, 255, 255)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "img",
+      "addressable": true
     },
-    "branding": {
-        "color": "rgb(255, 255, 255)",
-        "theme": "light"
+    {
+      "path": "build",
+      "addressable": true
     },
-    "files": [
-        {
-            "path": "img",
-            "addressable": true
-        },
-        {
-            "path": "build",
-            "addressable": true
-        },
-        {
-            "path": "index.html",
-            "addressable": true
-        },
-        {
-            "path": "dialog.html",
-            "addressable": true
-        }
-    ],
-    "categories": [
-        "Plan and track"
-    ],
-    "contributions": [
-        {
-            "id": "openQueryAction",
-            "type": "ms.vss-web.action",
-            "description": "Open in Excel context menu on a query definition.",
-            "targets": [
-                "ms.vss-work-web.work-item-query-menu"
-            ],
-            "properties": {
-                "text": "Open in Excel",
-                "icon": "img/miniexcellogo.png",
-                "group": "actions",
-                "uri": "index.html"
-            }
-        },
-        {
-            "id": "openWorkItemsAction",
-            "type": "ms.vss-web.action",
-            "description": "Open in Excel context menu on a work item.",
-            "targets": [
-                "ms.vss-work-web.work-item-context-menu"
-            ],
-            "properties": {
-                "text": "Open in Excel",
-                "icon": "img/miniexcellogo.png",
-                "group": "actions",
-                "uri": "index.html"
-            }
-        },
-        {
-            "id": "openQueryOnToolbarAction",
-            "type": "ms.vss-web.action",
-            "description": "Open in Excel toolbar menu item on the query results.",
-            "targets": [
-                "ms.vss-work-web.work-item-query-results-toolbar-menu"
-            ],
-            "properties": {
-                "text": "Open in Excel",
-                "icon": "img/miniexcellogo.png",
-                "group": "actions",
-                "uri": "index.html"
-            }
-        },
-        {
-            "id": "notificationDialog",
-            "type": "ms.vss-web.control",
-            "targets": [],
-            "properties": {
-                "uri": "dialog.html"
-            }
-        }
-    ]
+    {
+      "path": "index.html",
+      "addressable": true
+    },
+    {
+      "path": "dialog.html",
+      "addressable": true
+    }
+  ],
+  "categories": [
+    "Plan and track"
+  ],
+  "contributions": [
+    {
+      "id": "openQueryAction",
+      "type": "ms.vss-web.action",
+      "description": "Open in Excel context menu on a query definition.",
+      "targets": [
+        "ms.vss-work-web.work-item-query-menu"
+      ],
+      "properties": {
+        "text": "Open in Excel",
+        "icon": "img/miniexcellogo.png",
+        "group": "actions",
+        "uri": "index.html"
+      }
+    },
+    {
+      "id": "openWorkItemsAction",
+      "type": "ms.vss-web.action",
+      "description": "Open in Excel context menu on a work item.",
+      "targets": [
+        "ms.vss-work-web.work-item-context-menu"
+      ],
+      "properties": {
+        "text": "Open in Excel",
+        "icon": "img/miniexcellogo.png",
+        "group": "actions",
+        "uri": "index.html"
+      }
+    },
+    {
+      "id": "openQueryOnToolbarAction",
+      "type": "ms.vss-web.action",
+      "description": "Open in Excel toolbar menu item on the query results.",
+      "targets": [
+        "ms.vss-work-web.work-item-query-results-toolbar-menu"
+      ],
+      "properties": {
+        "text": "Open in Excel",
+        "icon": "img/miniexcellogo.png",
+        "group": "actions",
+        "uri": "index.html"
+      }
+    },
+    {
+      "id": "notificationDialog",
+      "type": "ms.vss-web.control",
+      "targets": [],
+      "properties": {
+        "uri": "dialog.html"
+      }
+    }
+  ]
 }
