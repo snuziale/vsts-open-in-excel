@@ -4,3 +4,13 @@ typings
 dist
 build
 *.vsix
+/.vs/vsts-open-in-excel/v15/.suo
+/.vs/vsts-open-in-excel/config/applicationhost.config
+/.vs/config/applicationhost.config
+/.vs/ProjectSettings.json
+/.vs/VSWorkspaceState.json
+/.vs/slnx.sqlite
+/.vs/vsts-open-in-excel/v16/.suo
+/package-lock.json
+/.vs/slnx.sqlite-journal
+*.suo
